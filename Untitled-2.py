@@ -11,27 +11,31 @@ class Student:
         self.grades == student.grades
 
     def __str__(self):
-        return f"My name is {self.name}"
+        return f"имя: {self.name} + фамилия: {self.surname} + курсы: {self.finished_courses} + оценка: {self.grades}"
 
 
 class Mentor:
     def __init__(self, name, surname):
         self.name = name
         self.surname = surname
+        self.finished_courses = []
         self.courses_attached = []
 
+    def __str__(self):
+        return f"имя: {self.name} + фамилия: {self.surname}"
 
-class lecturer(Mentor):
+
+class Lecturer(Mentor):
     def __init__(self, name, surname):
-        self.finished_courses = []
         self.name = name
         self.surname = surname
+        self.finished_courses = []
         self.courses_in_progress = []
         self.courses_attached = []
         self.grades = []
 
     def __str__(self):
-        return f"имя: {self.name} and фамилия: {self.surname}"
+        return f"имя: {self.name} + фамилия: {self.surname} + курсы: {self.courses_attached} + оценка: {self.grades}"
 
     def rate_lecturer(self, lecturer, course, grade):
         if isinstance(lecturer, lecturer) and course in self.finished_courses and course in self.courses_in_progress:
@@ -47,7 +51,7 @@ best_student1 = Student('Ruoy', 'Eman', 'your_gender')
 best_student1.courses_in_progress += ['Python']
 best_student1.finished_courses += ['Git']
 
-cool_lecturer = lecturer('Some', 'Buddy')
+cool_lecturer = Lecturer('Some', 'Buddy')
 cool_lecturer.courses_in_progress += ['Python']
 cool_lecturer.finished_courses += ['Git']
 cool_lecturer.grades1 = ['9']
@@ -61,40 +65,8 @@ print(cool_lecturer.name, cool_lecturer.surname, cool_lecturer.courses_in_progre
 print()
 
 # Задание №3
-class Student:
-    def __init__(self, name, surname):
-        self.name = name
-        self.surname = surname
-        self.finished_courses = []
-        self.courses_in_progress = []
-        self.grades = {}
-    def __str__(self):
-        return f"имя: {self.name} + фамилия: {self.surname} + курсы: {self.finished_courses} + оценка: {self.grades}"
 
-
-class Mentor:
-    def __init__(self, name, surname):
-        self.name = name
-        self.surname = surname
-        self.finished_courses = []
-        self.courses_attached = []
-
-    def __str__(self):
-        return f"имя: {self.name} + фамилия: {self.surname}"
-
-
-class lecturer(Mentor):
-    def __init__(self, name, surname):
-        self.name = name
-        self.surname = surname
-        self.courses_in_progress = []
-        self.courses_attached = []
-        self.grades = []
-
-    def __str__(self):
-        return f"имя: {self.name} + фамилия: {self.surname} + курсы: {self.courses_attached} + оценка: {self.grades}"
-
-student1 = Student('Ruoy', 'Eman')
+student1 = Student('Ruoy', 'Eman', 'your_gender')
 student1.finished_courses += ['Git']
 student1.courses_in_progress += ['Python']
 student1.grades['Git'] = [7,9,10,8]
@@ -109,7 +81,7 @@ print(message1)
 print(message2)
 print()
 
-student2 = Student('Pol', 'Anderson')
+student2 = Student('Pol', 'Anderson', 'your_gender')
 student2.finished_courses += ['Git']
 student2.courses_in_progress += ['Python']
 student2.grades['Git'] = [9,9,10,8]
@@ -124,11 +96,11 @@ print(message4)
 print()
 
 # выводим данные лектора
-lecturer1 = lecturer('Aleksandr', 'Popov')
+lecturer1 = Lecturer('Aleksandr', 'Popov')
 lecturer1.courses_attached += ['Git']
 lecturer1.grades3 = [6,4,5,7]
 
-lecturer2 = lecturer('Lev', 'Tolstoi')
+lecturer2 = Lecturer('Lev', 'Tolstoi')
 lecturer2.courses_in_progress += ['Python']
 lecturer2.grades4 = [4,2,8,9]
 
@@ -147,7 +119,7 @@ average2 = sum(student1.grades['Python']) / len(student1.grades['Python'])
 print(average2)
 # Средний бал за домашние задания:
 average_score1 = sum(student1.grades['Git'] + student1.grades['Python']) / len(student1.grades['Git'] + student1.grades['Python'])
-print (average_score1)
+print(average_score1)
 
 average3 = sum(student2.grades['Git']) / len(student2.grades['Git'])
 print(average3)
@@ -170,22 +142,17 @@ class Student:
     def __str__(self):
         return f'{self.name} {self.surname}'
 
-
-student = Student('Ruoy', 'Eman')
-print(student)
+student1 = Student('Ruoy', 'Eman')
+print(student1)
+student2 = Student('Pol', 'Anderson')
+print(student2)
 
 class Student:
-    def __init__(self, average_score1):
-        self.grades = average_score1
+    def __init__(self, grades):
+        self.grades = grades
 
     def __str__(self):
-        return f'Средняя оценка за домашние задания: {self.average_score1}'
-
-    def __str__(self):
-        return f'Средняя оценка за домашние задания Git: {average1}'
-
-    def __str__(self):
-        return f'Средняя оценка за домашние задания Python: {average2}'
+        return (f'Средняя оценка за домашние задания: Git {average1}, Python {average2}')
 
 
 student = Student('10')
